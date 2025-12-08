@@ -10,16 +10,27 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         /* Custom Tailwind Configuration */
+        // ... (existing code)
         tailwind.config = {
+            darkMode: 'class', /* Enables dark mode based on the 'dark' class on the HTML tag */
             theme: {
                 extend: {
                     colors: {
+                        // Light Mode Base Colors (Default)
                         'primary': '#4f46e5', /* Indigo-600 */
                         'secondary': '#f97316', /* Orange-500 */
-                        'background': '#0f172a', /* Slate-900 */
-                        'surface': '#1e293b', /* Slate-800 */
-                        'text-light': '#f8fafc', /* Slate-50 */
-                        'text-muted': '#94a3b8', /* Slate-400 */
+                        'background': '#f1f5f9', /* Slate-100 (Light background) */
+                        'surface': '#ffffff', /* White (Light card/surface) */
+                        'text-light': '#1e293b', /* Slate-800 (Dark text on light background) */
+                        'text-muted': '#64748b', /* Slate-500 (Muted text on light background) */
+                        
+                        // Dark Mode Colors (Used when 'dark' class is present)
+                        'dark-primary': '#818cf8', /* Indigo-400 (Brighter for dark mode) */
+                        'dark-secondary': '#fb923c', /* Orange-400 (Brighter for dark mode) */
+                        'dark-background': '#0f172a', /* Slate-900 (Dark background) */
+                        'dark-surface': '#1e293b', /* Slate-800 (Dark card/surface) */
+                        'dark-text-light': '#f8fafc', /* Slate-50 (Light text on dark background) */
+                        'dark-text-muted': '#94a3b8', /* Slate-400 (Muted light text) */
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -28,54 +39,84 @@
             }
         }
     </style>
-    <!-- Custom Scroll Styles -->
+     <!-- Custom Styles for dark/light mode transitions -->
     <style>
         /* Smooth scrolling behavior */
         html {
             scroll-behavior: smooth;
+            transition: background-color 0.5s ease; /* Transition for theme change */
         }
+        
+        /* Apply dynamic colors using CSS variables (Optional, but good practice for theme switching) */
+        :root {
+            /* Light Mode Defaults */
+            --color-bg: #f1f5f9;
+            --color-surface: #ffffff;
+            --color-text-light: #1e293b;
+            --color-text-muted: #64748b;
+            --color-primary: #4f46e5;
+            --color-secondary: #f97316;
+            transition: all 0.5s ease;
+        }
+
+        .dark {
+            /* Dark Mode Overrides */
+            --color-bg: #0f172a;
+            --color-surface: #1e293b;
+            --color-text-light: #f8fafc;
+            --color-text-muted: #94a3b8;
+            --color-primary: #818cf8;
+            --color-secondary: #fb923c;
+        }
+
+        /* Applying the variables to main elements */
+        body {
+            background-color: var(--color-bg);
+            color: var(--color-text-light);
+        }
+        .bg-surface, .dark\:bg-dark-surface {
+             background-color: var(--color-surface);
+        }
+
         /* Style for active navigation link (optional) */
         .nav-link.active {
-            color: #f97316; /* secondary color */
-            border-bottom: 2px solid #f97316;
+            color: var(--color-secondary); 
+            border-bottom: 2px solid var(--color-secondary);
         }
-        /* Project Link Hover Effect - Enhanced for visibility (Keeping classes defined but they won't be used) */
+        /* Project Link Hover Effect (Kept for consistency, even if projects are removed) */
         .project-link {
-            /* General transition for all effects */
-            /* active:scale-[0.98] class will provide the click feedback */
-            transition: color 0.3s, transform 0.3s, background-color 0.3s, box-shadow 0.3s, scale 0.1s; 
-            border-radius: 9999px; /* Fully rounded */
+            transition: all 0.3s;
+            border-radius: 9999px; 
             padding: 0.5rem 1rem;
         }
-        .project-link:hover {
-            transform: translateY(-2px);
-        }
-        /* Custom secondary shadow for source code link (Keeping classes defined but they won't be used) */
-        .project-link-primary:hover {
-            box-shadow: 0 4px 15px rgba(79, 70, 229, 0.4); /* Primary color shadow */
-        }
-        .project-link-secondary:hover {
-            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.4); /* Secondary color shadow */
-        }
+        
     </style>
 </head>
 
-<body class="bg-background text-text-light font-sans">
+<body class="transition-colors duration-500">
 
     <!-- Navbar -->
-    <header class="sticky top-0 z-50 bg-surface/95 backdrop-blur-sm shadow-lg">
+    <header class="sticky top-0 z-50 bg-surface/95 dark:bg-dark-surface/95 backdrop-blur-sm shadow-lg transition-colors duration-500">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <!-- Logo/Name -->
-                <a href="#hero" class="text-2xl font-bold text-primary hover:text-secondary transition duration-300">Shah jamil <span class="text-text-light">Sifat</span></a>
+                <a href="#Hero" class="text-2xl font-bold text-primary dark:text-dark-primary hover:text-secondary dark:hover:text-dark-secondary transition duration-300">Shahjamil <span class="text-text-light dark:text-dark-text-light">Sifat</span></a>
                 
-                <!-- Desktop Navigation -->
-                <nav class="hidden md:flex space-x-8">
-                    <a href="#about" class="nav-link text-text-light hover:text-secondary px-3 py-2 text-sm font-medium transition duration-200 rounded-md">About</a>
-                    <a href="#skills" class="nav-link text-text-light hover:text-secondary px-3 py-2 text-sm font-medium transition duration-200 rounded-md">Skills</a>
-                    <!-- NAVIGATION LINK UPDATED FROM PROJECTS TO EDUCATION -->
-                    <a href="#education" class="nav-link text-text-light hover:text-secondary px-3 py-2 text-sm font-medium transition duration-200 rounded-md">Education</a>
-                    <a href="#contact" class="nav-link text-text-light hover:text-secondary px-3 py-2 text-sm font-medium transition duration-200 rounded-md">Contact</a>
+                <!-- Desktop Navigation and Theme Toggle -->
+                <nav class="flex items-center space-x-4 md:space-x-8">
+                    <!-- Nav Links -->
+                    <div class="hidden md:flex space-x-8">
+                        <a href="#about" class="nav-link text-text-light dark:text-dark-text-light hover:text-secondary dark:hover:text-dark-secondary px-3 py-2 text-sm font-medium transition duration-300 transform hover:scale-105 rounded-md">About</a>
+                        <a href="#skills" class="nav-link text-text-light dark:text-dark-text-light hover:text-secondary dark:hover:text-dark-secondary px-3 py-2 text-sm font-medium transition duration-300 transform hover:scale-105 rounded-md">Skills</a>
+                        <a href="#education" class="nav-link text-text-light dark:text-dark-text-light hover:text-secondary dark:hover:text-dark-secondary px-3 py-2 text-sm font-medium transition duration-300 transform hover:scale-105 rounded-md">Education</a>
+                        <a href="#contact" class="nav-link text-text-light dark:text-dark-text-light hover:text-secondary dark:hover:text-dark-secondary px-3 py-2 text-sm font-medium transition duration-300 transform hover:scale-105 rounded-md">Contact</a>
+                    </div>
+
+                    <!-- Theme Toggle Button -->
+                    <button id="theme-toggle" class="p-2 rounded-full text-text-light dark:text-dark-text-light hover:bg-primary/20 hover:text-primary dark:hover:text-dark-primary duration-300 transform hover:scale-105" aria-label="Toggle dark mode">
+                        <i data-lucide="moon" id="moon-icon" class="w-6 h-6 hidden dark:block"></i>
+                        <i data-lucide="sun" id="sun-icon" class="w-6 h-6 block dark:hidden"></i>
+                    </button>
                 </nav>
             </div>
         </div>
@@ -252,21 +293,74 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-surface py-8 mt-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-text-muted">
+     <footer class="bg-surface dark:bg-dark-surface py-8 mt-12 transition-colors duration-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-text-muted dark:text-dark-text-muted transition-colors duration-500">
             <p>&copy; 2025 Shahjamil. All rights reserved. Built with Tailwind CSS and a love for code.</p>
         </div>
     </footer>
 
     <!-- JavaScript for Icon Replacement and Scroll Tracking -->
     <script>
-        // Replace Lucide icons in the document
-        lucide.createIcons();
+        // --- Theme Toggle Logic ---
+        const htmlElement = document.documentElement;
+        const themeToggle = document.getElementById('theme-toggle');
 
-        // Simple smooth scroll implementation for navigation (optional if using scroll-smooth class)
+        // 1. Initial Theme Setup: Check localStorage or system preference
+        function initTheme() {
+            // Check for previous user preference
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                htmlElement.classList.add('dark');
+            } else {
+                htmlElement.classList.remove('dark');
+            }
+            // Update icon state based on final theme
+            updateThemeIcon();
+        }
+
+        // 2. Icon Update
+        function updateThemeIcon() {
+            const moonIcon = document.getElementById('moon-icon');
+            const sunIcon = document.getElementById('sun-icon');
+
+            if (htmlElement.classList.contains('dark')) {
+                // If in dark mode, show moon (to switch to light)
+                moonIcon.classList.remove('hidden');
+                sunIcon.classList.add('hidden');
+            } else {
+                // If in light mode, show sun (to switch to dark)
+                moonIcon.classList.add('hidden');
+                sunIcon.classList.remove('hidden');
+            }
+        }
+
+        // 3. Toggle Function
+        function toggleTheme() {
+            htmlElement.classList.toggle('dark');
+            const currentTheme = htmlElement.classList.contains('dark') ? 'dark' : 'light';
+            localStorage.setItem('theme', currentTheme);
+            updateThemeIcon();
+        }
+
+        // Attach event listener
+        if (themeToggle) {
+            themeToggle.addEventListener('click', toggleTheme);
+        }
+
+        // --- Other Scripts ---
+
+        // Replace Lucide icons in the document
+        function initializeLucide() {
+            if (typeof lucide !== 'undefined' && lucide.createIcons) {
+                lucide.createIcons();
+            }
+        }
+
+        // Simple smooth scroll implementation for navigation
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                // Check if the link is an internal section link
                 if(this.getAttribute('href').length > 1) {
                     e.preventDefault();
                     document.querySelector(this.getAttribute('href')).scrollIntoView({
@@ -276,7 +370,7 @@
             });
         });
 
-        // Optional: Active link highlighting based on scroll position
+        // Active link highlighting based on scroll position
         const sections = document.querySelectorAll('section');
         const navLinks = document.querySelectorAll('.nav-link');
 
@@ -291,15 +385,16 @@
                     });
                 }
             });
-        }, { threshold: 0.5, rootMargin: "-100px 0px -100px 0px" }); // Adjusted threshold/margin for better activation
+        }, { threshold: 0.5, rootMargin: "-100px 0px -100px 0px" });
 
         sections.forEach(section => {
             observer.observe(section);
         });
 
-        // Initialize Lucide icons after DOM is ready
+        // Initialize on Load
         window.onload = () => {
-             lucide.createIcons();
+             initTheme();
+             initializeLucide();
         };
 
     </script>
