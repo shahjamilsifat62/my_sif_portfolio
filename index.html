@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shah Jamil Sifat - Professional Portfolio</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Custom Tailwind Configuration */
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#4f46e5', /* Indigo-600 */
+                        'secondary': '#f97316', /* Orange-500 */
+                        'background': '#0f172a', /* Slate-900 */
+                        'surface': '#1e293b', /* Slate-800 */
+                        'text-light': '#f8fafc', /* Slate-50 */
+                        'text-muted': '#94a3b8', /* Slate-400 */
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </style>
+    <!-- Custom Scroll Styles -->
+    <style>
+        /* Smooth scrolling behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+        /* Style for active navigation link (optional) */
+        .nav-link.active {
+            color: #f97316; /* secondary color */
+            border-bottom: 2px solid #f97316;
+        }
+        /* Project Link Hover Effect - Enhanced for visibility (Keeping classes defined but they won't be used) */
+        .project-link {
+            /* General transition for all effects */
+            /* active:scale-[0.98] class will provide the click feedback */
+            transition: color 0.3s, transform 0.3s, background-color 0.3s, box-shadow 0.3s, scale 0.1s; 
+            border-radius: 9999px; /* Fully rounded */
+            padding: 0.5rem 1rem;
+        }
+        .project-link:hover {
+            transform: translateY(-2px);
+        }
+        /* Custom secondary shadow for source code link (Keeping classes defined but they won't be used) */
+        .project-link-primary:hover {
+            box-shadow: 0 4px 15px rgba(79, 70, 229, 0.4); /* Primary color shadow */
+        }
+        .project-link-secondary:hover {
+            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.4); /* Secondary color shadow */
+        }
+    </style>
+</head>
+
+<body class="bg-background text-text-light font-sans">
+
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 bg-surface/95 backdrop-blur-sm shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo/Name -->
+                <a href="#hero" class="text-2xl font-bold text-primary hover:text-secondary transition duration-300">Shah jamil <span class="text-text-light">Sifat</span></a>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#about" class="nav-link text-text-light hover:text-secondary px-3 py-2 text-sm font-medium transition duration-200 rounded-md">About</a>
+                    <a href="#skills" class="nav-link text-text-light hover:text-secondary px-3 py-2 text-sm font-medium transition duration-200 rounded-md">Skills</a>
+                    <!-- NAVIGATION LINK UPDATED FROM PROJECTS TO EDUCATION -->
+                    <a href="#education" class="nav-link text-text-light hover:text-secondary px-3 py-2 text-sm font-medium transition duration-200 rounded-md">Education</a>
+                    <a href="#contact" class="nav-link text-text-light hover:text-secondary px-3 py-2 text-sm font-medium transition duration-200 rounded-md">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+
+        <!-- 1. Hero Section -->
+        <section id="hero" class="min-h-[90vh] flex items-center py-20 bg-background">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <p class="text-xl text-secondary font-semibold mb-4">Hi, my name is</p>
+                <h1 class="text-6xl sm:text-7xl lg:text-8xl font-extrabold text-text-light mb-4 leading-tight">
+                    Shah Jamil Sifat
+                </h1>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-text-muted mb-8">
+                    I build accessible and powerful web experiences.
+                </h2>
+                <p class="max-w-3xl mx-auto text-lg text-text-muted mb-12">
+	             To obtain an entry-level position where I can apply my skills in Android app development, networking, and computer operations. I aim to grow as a dependable IT professional and contribute effectively to an organization through problem-solving and continuous learning                </p>
+                <!-- Hero Button link updated from #projects to #education -->
+                <a href="#education" class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-full shadow-lg text-text-light bg-primary hover:bg-indigo-700 active:scale-[0.99] active:ring-4 active:ring-primary/50 transition duration-300 transform hover:scale-105">
+                    View My Qualifications
+                    <i data-lucide="arrow-right" class="w-5 h-5 ml-2"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- 2. About Section -->
+        <section id="about" class="py-20 bg-surface">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-bold text-text-light mb-12 border-b-4 border-secondary pb-2 inline-block">
+                    <i data-lucide="user" class="inline-block mr-3 w-8 h-8 text-secondary"></i>About Me
+                </h2>
+                <div class="grid md:grid-cols-3 gap-12 items-center">
+                    <div class="md:col-span-2 space-y-6 text-lg text-text-muted">
+                        <p>Hello! I'm Sifat, a passionate developer with 5+ years of experience in the technology sector. My journey began with a curiosity for how things work on the web, leading me to master the full JavaScript ecosystem.</p>
+                        <p>I thrive on solving complex problems and creating elegant solutions, from designing robust backend APIs with Node.js to building engaging, pixel-perfect frontend interfaces with React and Angular. I believe in writing clean, maintainable, and well-tested code.</p>
+                        <p>When I'm not coding, I enjoy contributing to open-source projects and exploring new architectural patterns. Let's connect and build something incredible!</p>
+                        <ul class="list-disc list-inside space-y-2 text-primary font-medium pt-4">
+                            <li>Modern JavaScript (ES6+)</li>
+                            <li>Cloud Platforms (AWS/GCP)</li>
+                            <li>CI/CD Automation</li>
+                        </ul>
+                    </div>
+                    <div class="hidden md:block md:col-span-1">
+                        <!-- Placeholder Image -->
+                        <img src="https://i.postimg.cc/90S8JvNq/Whats-App-Image-2025-12-06-at-20-11-46-3a5ca7ad.jpgs">
+                    </div>
+            </div>
+        </section>
+
+        <!-- 3. Skills Section -->
+        <section id="skills" class="py-20 bg-background">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-bold text-text-light mb-12 border-b-4 border-secondary pb-2 inline-block">
+                    <i data-lucide="zap" class="inline-block mr-3 w-8 h-8 text-secondary"></i>Skills & Expertise
+                </h2>
+
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8">
+                    <!-- Skill Card Template -->
+                    <div class="bg-surface p-6 rounded-xl shadow-lg hover:shadow-primary/30 transition duration-300 transform hover:-translate-y-1 text-center">
+                        <i data-lucide="laptop" class="w-10 h-10 text-primary mb-3 mx-auto"></i>
+                        <h3 class="text-xl font-semibold text-text-light mb-1">Frontend</h3>
+                        <p class="text-sm text-text-muted">React, Angular, Vue, Tailwind CSS</p>
+                    </div>
+
+                    <div class="bg-surface p-6 rounded-xl shadow-lg hover:shadow-primary/30 transition duration-300 transform hover:-translate-y-1 text-center">
+                        <i data-lucide="server" class="w-10 h-10 text-primary mb-3 mx-auto"></i>
+                        <h3 class="text-xl font-semibold text-text-light mb-1">Backend</h3>
+                        <p class="text-sm text-text-muted">Node.js, Express, Python (Flask/Django)</p>
+                    </div>
+
+                    <div class="bg-surface p-6 rounded-xl shadow-lg hover:shadow-primary/30 transition duration-300 transform hover:-translate-y-1 text-center">
+                        <i data-lucide="database" class="w-10 h-10 text-primary mb-3 mx-auto"></i>
+                        <h3 class="text-xl font-semibold text-text-light mb-1">Databases</h3>
+                        <p class="text-sm text-text-muted">PostgreSQL, MongoDB, Firestore</p>
+                    </div>
+
+                    <div class="bg-surface p-6 rounded-xl shadow-lg hover:shadow-primary/30 transition duration-300 transform hover:-translate-y-1 text-center">
+                        <i data-lucide="cloud" class="w-10 h-10 text-primary mb-3 mx-auto"></i>
+                        <h3 class="text-xl font-semibold text-text-light mb-1">DevOps</h3>
+                        <p class="text-sm text-text-muted">Docker, Kubernetes, AWS, CI/CD</p>
+                    </div>
+
+                    <div class="bg-surface p-6 rounded-xl shadow-lg hover:shadow-primary/30 transition duration-300 transform hover:-translate-y-1 text-center">
+                        <i data-lucide="code" class="w-10 h-10 text-primary mb-3 mx-auto"></i>
+                        <h3 class="text-xl font-semibold text-text-light mb-1">Languages</h3>
+                        <p class="text-sm text-text-muted">JavaScript, TypeScript, Go, SQL</p>
+                    </div>
+
+                    <div class="bg-surface p-6 rounded-xl shadow-lg hover:shadow-primary/30 transition duration-300 transform hover:-translate-y-1 text-center">
+                        <i data-lucide="git-fork" class="w-10 h-10 text-primary mb-3 mx-auto"></i>
+                        <h3 class="text-xl font-semibold text-text-light mb-1">Tools</h3>
+                        <p class="text-sm text-text-muted">Git, Webpack, Figma, VS Code</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Education Section (REPLACED PROJECTS) -->
+        <section id="education" class="py-20 bg-surface">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Title and Icon Updated -->
+                <h2 class="text-4xl font-bold text-text-light mb-12 border-b-4 border-secondary pb-2 inline-block">
+                    <i data-lucide="graduation-cap" class="inline-block mr-3 w-8 h-8 text-secondary"></i>My Education History
+                </h2>
+
+                <div class="space-y-16">
+                    <!-- Education Entry 1 -->
+                    <div class="bg-background p-8 rounded-xl shadow-2xl border-l-4 border-primary hover:shadow-primary/30 transition duration-500 transform hover:-translate-y-1 text-center">
+                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4">
+                            <h3 class="text-2xl font-bold text-text-light">Diploma in Computer Science and Technology</h3>
+                            <span class="text-primary text-lg font-semibold mt-1 sm:mt-0">2022 - 2026</span>
+                        </div>
+                        <p class="text-xl font-medium text-secondary mb-2">Pabna Polytecnic Institute</p>
+                        <p class="text-text-muted mb-4">Specialization in Android App development and networking. Thesis focused on optimizing query response times in large-scale Web development.</p>
+                        <div class="flex flex-wrap gap-3 text-sm">
+                            <span class="px-3 py-1 bg-surface rounded-full text-text-light border border-text-muted">GPA: 3.9/4.0</span>
+                            <span class="px-3 py-1 bg-surface rounded-full text-text-light border border-text-muted">Thesis: Distributed Caching</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Education Entry 2 -->
+                    <div class="bg-background p-8 rounded-xl shadow-2xl border-l-4 border-secondary hover:shadow-secondary/30 transition duration-500 transform hover:-translate-y-1 text-center">
+                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4">
+                            <h3 class="text-2xl font-bold text-text-light">Secondary School certificate</h3>
+                            <span class="text-secondary text-lg font-semibold mt-1 sm:mt-0">2021</span>
+                        </div>
+                        <p class="text-xl font-medium text-primary mb-2">Jalal Gonj High School</p>
+                        <p class="text-text-muted mb-4">Completed coursework in software engineering, data structures, and algorithms. Served as the lead developer for the university's student portal redesign project.</p>
+                        <div class="flex flex-wrap gap-3 text-sm">
+                            <span class="px-3 py-1 bg-surface rounded-full text-text-light border border-text-muted">Graduated with Honors</span>
+                            <span class="px-3 py-1 bg-surface rounded-full text-text-light border border-text-muted">Major in Software Engineering</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 5. Contact Section -->
+        <section id="contact" class="py-20 bg-background">
+            <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-4xl font-bold text-text-light mb-6 border-b-4 border-secondary pb-2 inline-block">
+                    <i data-lucide="mail" class="inline-block mr-3 w-8 h-8 text-secondary"></i>Get In Touch
+                </h2>
+                <p class="text-xl text-text-muted mb-12">
+                    I'm currently seeking new opportunities and open to collaborating on exciting projects. Whether you have a question or just want to say hi, feel free to reach out!
+                </p>
+
+                <div class="space-y-8">
+                    <!-- Contact Link with active state styling -->
+                    <a href="shahjamilsifat62@gmail.com" class="inline-flex items-center justify-center px-10 py-4 border-2 border-primary text-lg font-semibold rounded-full shadow-xl text-primary hover:bg-primary hover:text-background active:scale-[0.98] active:ring-4 active:ring-primary/50 transition duration-300 transform hover:scale-105">
+                        <i data-lucide="send" class="w-6 h-6 mr-3"></i> shahjamilsifat62@gmail.com
+                    </a>
+
+                    <div class="flex justify-center space-x-6 pt-8">
+                        <!-- Social Links -->
+                        <a href="#" target="_blank" class="text-text-muted hover:text-primary transition duration-200 transform hover:scale-105">
+                            <i data-lucide="linkedin" class="w-8 h-8"></i>
+                        </a>
+                        <a href="https://github.com/shahjamilsifat62" target="_blank" class="text-text-muted hover:text-primary transition duration-200 transform hover:scale-105">
+                            <i data-lucide="github" class="w-8 h-8"></i>
+                        </a>
+                        <a href="#" target="_blank" class="text-text-muted hover:text-primary transition duration-200 transform hover:scale-105">
+                            <i data-lucide="twitter" class="w-8 h-8"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-surface py-8 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-text-muted">
+            <p>&copy; 2025 Shahjamil. All rights reserved. Built with Tailwind CSS and a love for code.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Icon Replacement and Scroll Tracking -->
+    <script>
+        // Replace Lucide icons in the document
+        lucide.createIcons();
+
+        // Simple smooth scroll implementation for navigation (optional if using scroll-smooth class)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                // Check if the link is an internal section link
+                if(this.getAttribute('href').length > 1) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Optional: Active link highlighting based on scroll position
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href').substring(1) === entry.target.id) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, { threshold: 0.5, rootMargin: "-100px 0px -100px 0px" }); // Adjusted threshold/margin for better activation
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Initialize Lucide icons after DOM is ready
+        window.onload = () => {
+             lucide.createIcons();
+        };
+
+    </script>
+</body>
+</html>
